@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"net/http"
+)
 
 func main() {
 	db, err := connectDatabase("./links.db")
@@ -15,5 +18,9 @@ func main() {
 		return
 	}
 	urlRepo := NewURLRepository(db)
+	http.HandleFunc("/shorten", urlRepo.HandleShorten)
+	http.HandleFunc("/short/", urlRepo.HandleRedirect)
 
+	fmt.Println("URL Shortener is running on :8080")
+	http.ListenAndServe(":8080", nil)
 }
