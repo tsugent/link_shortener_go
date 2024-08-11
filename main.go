@@ -14,4 +14,6 @@ func main() {
 		fmt.Printf("Failed to initialize the database: %s\n", err)
 		return
 	}
+	urlRepo := NewURLRepository(db)
+
 }

@@ -19,6 +19,11 @@ type URLRepository struct {
 	db *sql.DB
 }
 
+// getter for URL Repo
+func NewURLRepository(db *sql.DB) *URLRepository {
+	return &URLRepository{db: db}
+}
+
 func (repo *URLRepository) Create(url string) (URL, error) {
 	var createdURL URL
 	uuidString := uuid.NewString()
