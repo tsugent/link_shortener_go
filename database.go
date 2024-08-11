@@ -2,6 +2,9 @@ package main
 
 import (
 	"database/sql"
+
+	_ "github.com/go-sql-driver/mysql"
+	_ "github.com/mattn/go-sqlite3"
 )
 
 // Connect to database
